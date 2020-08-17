@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+<label for="fname">Enter names separated by ",":</label><br>
+<input type="text" id="fname" name="fname" size = "100" value = "Bhaskar, Sujit, Raj, Bharat, Chandra, C, R, Balaji, Ranga, Suresh"><br>
+<button onclick="myfunction();">Shuffle Using Random Swapping</button>
+<button onclick="shuffleUsingSortFunc(numberStrings);updateNumberList(numberStrings);">Shuffle Using Sort Function</button>
+<div id="numberList"></div>
+<script>
+function myfunction(){
+var str = document.getElementById("fname").value;
+var numberStrings = str.split(","); 
+  shuffleUsingRandomSwapping(numberStrings)
+  updateNumberList(numberStrings);
+}
+function updateNumberList(array){
+  var s="";
+  for(var i=0;i<array.length;i++){
+    s+="<br>"+i+". "+array[i];
+  }
+  document.getElementById("numberList").innerHTML=s;
+}
+
+function shuffleUsingRandomSwapping(array){
+//  var str = document.getElementById("fname").value;
+//var numberStrings = str.split(","); 
+  var j,x,i=0,len=array.length;
+  for(i;i<len;i++){
+    j=Math.floor(Math.random()*len);
+    x=array[i];
+    array[i]=array[j];
+    array[j]=x;
+  }
+}
+
+function shuffleUsingSortFunc(array){
+  array.sort(function(){
+    return 0.5-Math.random();
+  });
+}
+</script>
+</body>
+</html>
